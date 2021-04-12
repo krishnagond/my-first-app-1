@@ -1,13 +1,13 @@
-<form class = "text-center" [formGroup]="loginForm" (ngSubmit)="onSubmit()" >
+<form class = "text-center" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
   
   <div class = "form-group row">
     <label class = "col-sm-2">Username:</label>
-    <input class="col-sm-4 form-control" type="email">
+    <input class="col-sm-4 form-control" formControlName="username" type="email">
   </div>
   
   <div class = "form-group row">
     <label class = "col-sm-2 label">Password:</label>
-    <input class = "col-sm-4 form-control" type="password" >
+    <input class = "col-sm-4 form-control" formControlName="password"  type="password" >
   </div>
 
   <div class = "form-group row">
