@@ -15,8 +15,8 @@ export class LoginComponent implements OnInit {
 
 
   loginForm = new FormGroup({
-    firstName: new FormControl(''),
-    lastName: new FormControl(''),
+    username: new FormControl(''),
+    password: new FormControl(''),
   });
 
 

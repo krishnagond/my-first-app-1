@@ -1,29 +1,87 @@
-<form class = "text-center" >
-  
-    <div class = "form-group row">
-     <label class = "col-sm-2">Username:</label>
-      <input class="col-sm-4 form-control" type="text">
-    </div>
-    
-    
-    <div class = "form-group row">
-        <label class = "col-sm-2">Email:</label>
-         <input class="col-sm-4 form-control" type="email">
-       </div>
+ <form class = "text-center" [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
+              <div class="row form-group">
+                  <div class="col-sm-2">
+                       <label> Username : </label>
+                  </div>
+                  <div class="col-sm-4">
+                  <input class="form-control" placeholder="Username" formControlName="username" type="text">
+              </div>
+          </div>
 
-    <div class = "form-group row">
-      <label class = "col-sm-2 label">Password:</label>
-      <input class = "col-sm-4 form-control" type="password" >
-    </div>
-  
-    <div class = "form-group row">
-      <div class="col-sm-2 ">
-        <button class="btn-danger btn" type = "reset">Reset </button>
+          <div class="row form-group">
+              <div class="col-sm-2">
+              <label> First Name : </label> 
+              </div>
+              <div class="col-sm-4">
+                  <input class="form-control" placeholder="First Name" formControlName="firstName" type="text">
+              </div>
+          </div>
+
+
+          <div class="row form-group">
+
+              <div class="col-sm-2">
+                   <label> Last Name : </label>
+              </div>
+              <div class="col-sm-4">
+              <input class="form-control" placeholder="Last Name" formControlName="lastName" type="text">
+          </div>
       </div>
-  
-      <div class = "col-sm-2">
-        <button class="btn-primary btn" type="submit" >Submit</button>
+
+      <div class="row form-group">
+          <div class="col-sm-2">
+               <label> Mobile No. : </label>
+          </div>
+          <div class="col-sm-4">
+          <input class="form-control" placeholder="Mobile No." formControlName="mobileNo" type="text">
       </div>
-    </div>
-  
-    </form>
+  </div>
+  <div class="row form-group">
+      <div class="col-sm-2">
+           <label for="email"> Email : </label>
+      </div>
+      <div class="col-sm-4">
+      <input class="form-control" placeholder="Email" type="email" formControlName="email" id="email">
+  </div>
+</div>
+             
+
+<div class="row form-group">
+  <div class="col-sm-2">
+       <label for="pwd"> Password : </label>
+  </div>
+  <div class="col-sm-4">
+  <input class="form-control" placeholder="Password" type="password" formControlName="password" id="pwd" required>
+</div>
+</div>
+
+<div class="row form-group">
+  <div class="col-sm-2">
+       <label for="pwd"> Re-Password : </label>
+  </div>
+  <div class="col-sm-4">
+  <input class="form-control" placeholder="Re-Password" type="password" formControlName="rePassword" id="conferm-password" required>
+</div>
+</div>
+
+
+<!-- <div class="form-group form-check">
+  <label class="form-check-label">
+    <input class="form-check-input" type="checkbox"> Remember me
+  </label>
+</div>
+-->
+<div class="row form-group">
+
+   <div class="col-sm-2">
+
+
+             <input class="btn btn-danger" type="reset" value="Reset">
+   </div>
+   <div class="col-sm-2">
+             <input class = "btn btn-primary" type="submit" value="Submit">
+   </div>
+</div>
+
+          </form>
+     
