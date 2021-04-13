@@ -9,6 +9,7 @@ import { FirstComponent } from './first/first.component';
 import { SecondComponent } from './second/second.component';
 import { SignupComponent } from './signup/signup.component';
 import { ProfilepageComponent } from './profilepage/profilepage.component';
+import { UploadfileComponent } from './uploadfile/uploadfile.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { ProfilepageComponent } from './profilepage/profilepage.component';
     FirstComponent,
     SecondComponent,
     SignupComponent,
-    ProfilepageComponent
+    ProfilepageComponent,
+    UploadfileComponent
   ],
   imports: [
     BrowserModule,
