@@ -1,14 +1,13 @@
-<div style="color:red" *ngIf="error">{{message}}</div>  
-
 <form class = "text-center" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+  
   <div class = "form-group row">
     <label class = "col-sm-2">Username:</label>
-    <input class="col-sm-4 form-control" placeholder="Username" formControlName="username" type="text">
+    <input class="col-sm-4 form-control" formControlName="username" type="email">
   </div>
   
   <div class = "form-group row">
     <label class = "col-sm-2 label">Password:</label>
-    <input class = "col-sm-4 form-control" placeholder="Password" formControlName="password"  type="password" >
+    <input class = "col-sm-4 form-control" formControlName="password"  type="password" >
   </div>
 
   <div class = "form-group row">

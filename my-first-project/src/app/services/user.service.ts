@@ -28,13 +28,13 @@ getUser():Observable<User>{
 
 
 loginUser(data:any):Observable<any>{
+  console.log(data);
   return this.http.post<any>(this.userUrl+'login',data);
 }
 
 logoutUser():Observable<any>{
-  localStorage.setItem('token','');
-  return this.http.get<any>(this.userUrl+'logout');
-
+console.log("logout");
+return this.http.get<any>(this.userUrl+'logout');
 }
 
 }
