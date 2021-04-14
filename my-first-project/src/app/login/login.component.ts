@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
+import { Router } from '@angular/router';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-login',
@@ -8,9 +10,16 @@ import { FormGroup, FormControl } from '@angular/forms';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
-
+  constructor(private userService:UserService, private router:Router) { }
+  
+  error:boolean=false;
+  message:any;
   ngOnInit(): void {
+    this.userService.logoutUser().subscribe(data=>{
+      console.log(data);
+    },err=>{
+      console.log(err);
+    });
   }
 
 
@@ -21,8 +30,20 @@ export class LoginComponent implements OnInit {
 
 
   onSubmit() {
-    // TODO: Use EventEmitter with form value
-    console.warn(this.loginForm.value);
+   
+    this.userService.loginUser(this.loginForm.value).subscribe(data=>{
+      if(data.auth==true){
+        localStorage.setItem("token",data.token);
+        this.router.navigate(['/profilepage']);
+      }
+    },err=>{
+      this.error=true;
+     this.message = err.error.text;
+     console.log(err);
+     
+      // this.message=err.
+    })
+
   }
 
 
