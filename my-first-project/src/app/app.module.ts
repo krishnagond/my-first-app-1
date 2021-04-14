@@ -10,6 +10,7 @@ import { SecondComponent } from './second/second.component';
 import { SignupComponent } from './signup/signup.component';
 import { ProfilepageComponent } from './profilepage/profilepage.component';
 import { UploadfileComponent } from './uploadfile/uploadfile.component';
+import { UserlistComponent } from './userlist/userlist.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { UploadfileComponent } from './uploadfile/uploadfile.component';
     SecondComponent,
     SignupComponent,
     ProfilepageComponent,
-    UploadfileComponent
+    UploadfileComponent,
+    UserlistComponent
   ],
   imports: [
     BrowserModule,
