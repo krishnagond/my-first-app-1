@@ -33,7 +33,7 @@ loginUser(data:any):Observable<any>{
 }
 
 logoutUser():Observable<any>{
-console.log("logout");
+localStorage.setItem('token','');
 return this.http.get<any>(this.userUrl+'logout');
 }
 

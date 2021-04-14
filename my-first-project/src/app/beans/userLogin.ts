@@ -2,8 +2,9 @@
 export interface User {
     firstname:String;
     lastname:String;
-    username:string;
-    email:string;
-    password:string;
+    username:String;
+    email:String;
+    password:String;
+    mobileNo:String;
    }
    
