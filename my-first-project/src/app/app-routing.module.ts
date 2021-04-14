@@ -5,11 +5,13 @@ import { SecondComponent } from './second/second.component';
 import { LoginComponent } from './login/login.component';
 import { ProfilepageComponent } from './profilepage/profilepage.component'
 import { SignupComponent } from './signup/signup.component';
+import { UserlistComponent } from './userlist/userlist.component';
 
 const routes: Routes = [
  { path: 'first-component', component: FirstComponent },
  { path: 'profilepage', component: ProfilepageComponent },
  {path:'login-component', component:LoginComponent},
+ { path:'userlist', component:UserlistComponent},
  {path:'signup-component', component:SignupComponent}
 ];
 
