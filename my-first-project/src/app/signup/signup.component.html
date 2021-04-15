@@ -1,10 +1,27 @@
- <form class = "text-center" [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
+<div *ngIf="error" style="color: red;">{{message}}</div>
+
+<form class = "text-center" [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
               <div class="row form-group">
                   <div class="col-sm-2">
                        <label> Username : </label>
                   </div>
                   <div class="col-sm-4">
-                  <input class="form-control" placeholder="Username" formControlName="username" type="text">
+                  <input class="form-control" placeholder="Username" formControlName="username" type="text" required>                      
+                <div *ngIf="username.invalid && (username.dirty || username.touched)" style="color: red; padding-left: 10px">
+
+                  <div *ngIf="username.errors.required">
+                  <p>Username is required.</p>
+                  </div>
+                  <div *ngIf="username.errors.minlength">
+                    <p>Username must be at least 4 characters long.</p>
+                  </div>
+                  <div *ngIf="username.errors.forbiddenName">
+                    <p>cannot be Bob.</p>
+                  </div>
+                  
+                  </div>
+  
+
               </div>
           </div>
 
@@ -13,8 +30,20 @@
               <label> First Name : </label> 
               </div>
               <div class="col-sm-4">
-                  <input class="form-control" placeholder="First Name" formControlName="firstName" type="text">
+                  <input class="form-control" placeholder="First Name" formControlName="firstName" type="text" required>
+                  <div *ngIf="firstName.invalid && (password.dirty || firstName.touched)" style="color: red; padding-left: 10px;">
+
+                    <div *ngIf="firstName.errors.required">
+                      <p> first Name is required.</p>
+                    </div>
+                    <div *ngIf="firstName.errors.minlength">
+                      <p> First Name must be at least 2 characters long.</p>
+                    </div>
+                    <div *ngIf="firstName.errors.forbiddenName">
+                      <p> First Name cannot be Bob.</p>
+                    </div>
               </div>
+          </div>
           </div>
 
 
@@ -24,8 +53,20 @@
                    <label> Last Name : </label>
               </div>
               <div class="col-sm-4">
-              <input class="form-control" placeholder="Last Name" formControlName="lastName" type="text">
+              <input class="form-control" placeholder="Last Name" formControlName="lastName" type="text" required>
+              <div *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)" style="color: red; padding-left: 10px;">
+
+                <div *ngIf="lastName.errors.required">
+                  <p> Last Name is required.</p>
+                </div>
+                <div *ngIf="lastName.errors.minlength">
+                  <p> Last Name must be at least 2 characters long.</p>
+                </div>
+                <div *ngIf="lastName.errors.forbiddenName">
+                  <p> Last Name cannot be Bob.</p>
+                </div>
           </div>
+      </div>
       </div>
 
       <div class="row form-group">
@@ -33,17 +74,43 @@
                <label> Mobile No. : </label>
           </div>
           <div class="col-sm-4">
-          <input class="form-control" placeholder="Mobile No." formControlName="mobileNo" type="text">
+          <input class="form-control" placeholder="Mobile No." formControlName="mobileNo" type="text" required>
+          <div *ngIf="mobileNo.invalid && (mobileNo.dirty || mobileNo.touched)" style="color: red; padding-left: 10px;">
+
+            <div *ngIf="mobileNo.errors.required">
+              <p> Mobile No. is required.</p>
+            </div>
+            <div>
+              <p *ngIf="mobileNo.errors.pattern">Mobile No. should be number.</p>
+              <p *ngIf="mobileNo.errors.minlength">Mobile No. should be 10 digit.</p>
+              <p *ngIf="mobileNo.errors.maxlength">Mobile No. should be 10 digit.</p>
+            </div>
+            <div *ngIf="mobileNo.errors.forbiddenName">
+              <p> Mobile No cannot be Bob.</p>
+            </div>
       </div>
+  </div>
   </div>
   <div class="row form-group">
       <div class="col-sm-2">
            <label for="email"> Email : </label>
       </div>
       <div class="col-sm-4">
-      <input class="form-control" placeholder="Email" type="email" formControlName="email" id="email">
+      <input class="form-control" placeholder="Email" type="email" formControlName="email" ngModel [email]="true" id="email" required>
+      <div *ngIf="email.invalid && (email.dirty || email.touched)" style="color: red; padding-left: 10px;">
+
+        <div *ngIf="email.errors.required">
+          <p> Email is required.</p>
+        </div>
+        <div *ngIf="email.errors.forbiddenName">
+          <p> Email cannot be Bob.</p>
+        </div>
+        <div *ngIf="email.errors.pattern">
+          <p>Email should be Example@gmail.com</p>
+        </div>
   </div>
 </div>
+  </div>
              
 
 <div class="row form-group">
@@ -52,6 +119,18 @@
   </div>
   <div class="col-sm-4">
   <input class="form-control" placeholder="Password" type="password" formControlName="password" id="pwd" required>
+  <div *ngIf="password.invalid && (password.dirty || password.touched)" style="color: red; padding-left: 10px;">
+
+    <div *ngIf="password.errors.required">
+      <p> Password is required.</p>
+    </div>
+    <div *ngIf="password.errors.minlength">
+      <p> Password must be at least 4 characters long.</p>
+    </div>
+    <div *ngIf="password.errors.forbiddenName">
+      <p> Password cannot be Bob.</p>
+    </div>
+</div>
 </div>
 </div>
 
@@ -61,6 +140,18 @@
   </div>
   <div class="col-sm-4">
   <input class="form-control" placeholder="Re-Password" type="password" formControlName="rePassword" id="conferm-password" required>
+  <div *ngIf="rePassword.invalid && (rePassword.dirty || rePassword.touched)" style="color: red; padding-left: 10px;">
+
+    <div *ngIf="rePassword.errors.required">
+      <p>Re Password is required.</p>
+    </div>
+    <div *ngIf="rePassword.errors.minlength">
+      <p>Password should not match.</p>
+    </div>
+    <div *ngIf="rePassword.errors.forbiddenName">
+      <p>Re Password cannot be Bob.</p>
+    </div>
+</div>
 </div>
 </div>
 
@@ -79,7 +170,7 @@
              <input class="btn btn-danger" type="reset" value="Reset">
    </div>
    <div class="col-sm-2">
-             <input class = "btn btn-primary" type="submit" value="Submit">
+             <input class = "btn btn-primary" type="submit" value="Submit" [disabled]="!signUpForm.valid">
    </div>
 </div>
 
