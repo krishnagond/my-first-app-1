@@ -9,7 +9,6 @@ import { UserService } from '../services/user.service';
   styleUrls: ['./signup.component.css']
 })
 export class SignupComponent implements OnInit {
-  
   constructor(private userService:UserService,private router:Router) { 
     this.userService=userService;
   }
@@ -29,7 +28,6 @@ export class SignupComponent implements OnInit {
   });  
 
   onSubmit(){
-    console.log(this.signUpForm.value);
 
     this.userService.postUser(this.signUpForm.value).subscribe(data =>{
       if(data){

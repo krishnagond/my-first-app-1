@@ -11,7 +11,7 @@ import { UserService } from '../services/user.service';
 export class LoginComponent implements OnInit {
 
   constructor(private userService:UserService, private router:Router) { }
-
+  
   error:boolean=false;
   message:any;
   ngOnInit(): void {
@@ -29,9 +29,7 @@ export class LoginComponent implements OnInit {
 
 
   onSubmit() {
-  
-
-    this.userService.loginUser(this.loginForm.value).subscribe(data=>{
+this.userService.loginUser(this.loginForm.value).subscribe(data=>{
       if(data.auth==true){
         localStorage.setItem("token",data.token);
         this.router.navigate(['/profilepage']);
@@ -40,11 +38,7 @@ export class LoginComponent implements OnInit {
       this.error=true;
      this.message = err.error.text;
      console.log(err);
-
-         })
-
+         });     
   }
-
-
 
 }

@@ -7,7 +7,6 @@ let verifyToken = require('./auth/verifyToken');
 // middleware that is specific to this router
 
 router.get('/users', verifyToken , function (req, res) {
-
     console.log(res.username);
     User.find().then(data=>{
         res.send(data);
@@ -21,6 +20,7 @@ router.get('/users', verifyToken , function (req, res) {
 router.get('/user', verifyToken , function(req, res){ 
 console.log(res.username);
 User.findOne({username:res.username}).then(data=>{
+console.log(data);
 res.send(data);
 }).catch(err=>{
 res.send(err);
@@ -33,11 +33,12 @@ router.post('/user', function (req, res) {
     userObject.firstname=req.body.firstName;
     userObject.lastname=req.body.lastName;
     userObject.username=req.body.username;
-    userObject.password= bcrypt.hashSync(req.body.password,10);
+    userObject.mobileNo=req.body.mobileNo;
     userObject.email=req.body.email;
     userObject.mobileNo=req.body.mobileNo;
-     user = new User(userObject);
-     user.save().then( data=>{
+    userObject.password= bcrypt.hashSync(req.body.password,10);
+    user = new User(userObject);
+    user.save().then( data=>{
     let token = jwt.sign({id:data.username},'my-secret', { expiresIn: 86400 });
      res.send({auth:true, token:token});
      }).catch(err=>{

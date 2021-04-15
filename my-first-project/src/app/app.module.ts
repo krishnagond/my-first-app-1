@@ -24,13 +24,12 @@ import { AuthinterceptorServiceProvider } from './auth/authinterceptor.service';
     UploadfileComponent,
     UserlistComponent
   ],
+
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    ReactiveFormsModule,
     HttpClientModule
-
   ],
   providers: [AuthinterceptorServiceProvider],
   bootstrap: [AppComponent]
